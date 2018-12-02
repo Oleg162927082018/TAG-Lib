@@ -14,37 +14,19 @@ TextTagCreateWidget::~TextTagCreateWidget()
     delete ui;
 }
 
-void TextTagCreateWidget::SetData(QDomDocument *config, QDomDocument *params)
+void TextTagCreateWidget::SetData(QString config, QString params)
 {
-    //Description
-    QDomElement descElement = params->firstChildElement("description");
-    if(descElement.isNull())
+    if(params.isNull())
     {
         ui->descBox->setPlainText("<html><head></head><body><p></p></body></html>");
     }
     else
     {
-        ui->descBox->setPlainText(descElement.firstChild().toCDATASection().data());
+        ui->descBox->setPlainText(params);
     }
 }
 
-void TextTagCreateWidget::GetData(QDomDocument *config, QDomDocument *params)
+void TextTagCreateWidget::GetData(QString &config, QString &params)
 {
-    //Description
-    QDomElement descElement = params->firstChildElement("description");
-    if(descElement.isNull())
-    {
-        descElement = params->createElement("description");
-        params->appendChild(descElement);
-
-        QDomCDATASection descValue = params->createCDATASection(ui->descBox->toPlainText());
-        descElement.appendChild(descValue);
-    }
-    else
-    {
-        QDomCDATASection descValue = params->createCDATASection(ui->descBox->toPlainText());
-        descElement.appendChild(descValue);
-
-        descElement.replaceChild(descElement.firstChild(), descValue);
-    }
+    params = ui->descBox->toPlainText();
 }

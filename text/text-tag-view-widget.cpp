@@ -13,21 +13,19 @@ TextTagViewWidget::~TextTagViewWidget()
     delete ui;
 }
 
-void TextTagViewWidget::SetData(QDomDocument *config, QDomDocument *params)
+void TextTagViewWidget::SetData(QString config, QString params)
 {
-    //Description
-    QDomElement descElement = params->firstChildElement("description");
-    if(descElement.isNull())
+    if(params.isNull())
     {
         ui->descBox->setHtml("");
     }
     else
     {
-        ui->descBox->setHtml(descElement.firstChild().toCDATASection().data());
+        ui->descBox->setHtml(params);
     }
 }
 
-void TextTagViewWidget::GetData(QDomDocument *config, QDomDocument *params)
+void TextTagViewWidget::GetData(QString &config, QString &params)
 {
 
 }

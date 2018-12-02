@@ -16,37 +16,19 @@ TextTagEditWidget::~TextTagEditWidget()
     delete ui;
 }
 
-void TextTagEditWidget::SetData(QDomDocument *config, QDomDocument *params)
+void TextTagEditWidget::SetData(QString config, QString params)
 {
-    //Description
-    QDomElement descElement = params->firstChildElement("description");
-    if(descElement.isNull())
+    if(params.isNull())
     {
         ui->descBox->setPlainText("");
     }
     else
     {
-        ui->descBox->setPlainText(descElement.firstChild().toCDATASection().data());
+        ui->descBox->setPlainText(params);
     }
 }
 
-void TextTagEditWidget::GetData(QDomDocument *config, QDomDocument *params)
+void TextTagEditWidget::GetData(QString &config, QString &params)
 {
-    //Description
-    QDomElement descElement = params->firstChildElement("description");
-    if(descElement.isNull())
-    {
-        descElement = params->createElement("description");
-        params->appendChild(descElement);
-
-        QDomCDATASection descValue = params->createCDATASection(ui->descBox->toPlainText());
-        descElement.appendChild(descValue);
-    }
-    else
-    {
-        QDomCDATASection descValue = params->createCDATASection(ui->descBox->toPlainText());
-        descElement.appendChild(descValue);
-
-        descElement.replaceChild(descElement.firstChild(), descValue);
-    }
+    params = ui->descBox->toPlainText();
 }

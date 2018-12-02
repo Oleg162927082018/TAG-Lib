@@ -19,7 +19,7 @@ SOURCES += text-tag.cpp \
 
 HEADERS += text-tag.h\
     text-tag-edit-widget.h \
-    ../../common/itagadapter.h \
+    ../../TTI/Common/itagadapter.h \
     text-tag-global.h \
     text-tag-view-widget.h \
     text-tag-create-widget.h

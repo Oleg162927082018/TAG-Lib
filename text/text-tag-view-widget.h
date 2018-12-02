@@ -12,7 +12,7 @@ class TextTagViewWidget : public ITagWidget
     Q_OBJECT
 
 public:
-    explicit TextTagViewWidget(QWidget *parent = 0);
+    explicit TextTagViewWidget(QWidget *parent = nullptr);
     ~TextTagViewWidget();
 
 private:
@@ -20,8 +20,8 @@ private:
 
     // ITagWidget interface
 public:
-    virtual void SetData(QDomDocument *config, QDomDocument *params);
-    virtual void GetData(QDomDocument *config, QDomDocument *params);
+    virtual void SetData(QString config, QString params);
+    virtual void GetData(QString &config, QString &params);
 };
 
 #endif // TEXTTAGVIEWWIDGET_H
