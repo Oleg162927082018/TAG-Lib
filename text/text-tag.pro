@@ -1,4 +1,4 @@
-VERSION = 1.0.0.0
+VERSION = 1.1.0.0
 QMAKE_TARGET_PRODUCT = Text tag adapter
 QMAKE_TARGET_DESCRIPTION = Adapter for binding text tags to Total Test Integrator
 QMAKE_TARGET_COPYRIGHT = Copyright\xA9 Oleg Kopyev 2016-2017
